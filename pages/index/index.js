@@ -1,42 +1,52 @@
-// pages/index/index.js
+// 1 引入自己封装过的接口的代码
+// 2 以前vue node中引入js文件的时候  
+// 3 小程序中 不要省略 建议把引入的路径名补充完整 
+import { request } from "../../request/index.js";
+
+
 Page({
   data: {
     // 轮播图数组
     swiperList: [],
     // 分类导航
-    navCateList: []
+    navCateList: [],
+    // 楼层数组
+    floorList: []
   },
 
   // 页面开始加载触发
   onLoad() {
     this.getSwiperList();
     this.getNavCateList();
+    this.getFloorList();
   },
 
   // 获取轮播图数据
   getSwiperList() {
-    wx.request({
-      url: 'https://api.zbztb.cn/api/public/v1/home/swiperdata',
-      success: (result) => {
-        // console.log(result.data);
-        // console.log(result);
+    /* 回调地狱！！！ */
+    request({ url: "https://api.zbztb.cn/api/public/v1/home/swiperdata" })
+      .then(result => {
         this.setData({
           swiperList: result.data.message
         })
-      }
-    });
-
+      })
   },
   // 获取分类导航
   getNavCateList() {
-    wx.request({
-      url: 'https://api.zbztb.cn/api/public/v1/home/catitems',
-      success: (result) => {
+    request({ url: "https://api.zbztb.cn/api/public/v1/home/catitems" })
+      .then(result => {
         this.setData({
           navCateList: result.data.message
         })
-      }
-    });
-
+      })
+  },
+  // 获取楼层数据
+  getFloorList() {
+    request({ url: "https://api.zbztb.cn/api/public/v1/home/floordata" })
+    .then(result => {
+      this.setData({
+        floorList: result.data.message
+      })
+    })
   }
 })

@@ -1,13 +1,47 @@
-.index_swiper{
-  swiper{
+.index_swiper {
+  swiper {
     height: 340rpx;
   }
 }
 
-.index_cate{
+.index_cate {
   display: flex;
-  navigator{
+  navigator {
     flex: 1;
     padding: 25rpx;
+  }
+}
+
+.index_floor {
+  .floor_item {
+    .floor_list {
+      padding: 0 10rpx;
+      /* 清除浮动 */
+      overflow: hidden;
+      navigator {
+        width: 33.33%;
+        float: left;
+
+        /* 后四个超链接 */
+        &:nth-last-child(-n + 4) {
+          /*  
+    原图的宽度 / 原图的高度  =变化后的宽度 / 变化后的高度  
+    变化后的高度  = 变化后的宽度(750rpx / 3 ) * 原图的高度 / 原图的宽度
+    height =  750rpx / 3 *  386 / 232;
+    height =  750rpx / 3 *  386 / 232  / 2 
+    */
+          height: 750rpx / 3 * 386 / 232 / 2;
+          border-left: 10rpx solid #fff;
+        }
+
+        /* 后两个超链接 */
+        &:nth-last-child(-n+2){
+          border-top: 10rpx solid #fff;
+        }
+        image {
+          height: 100%;
+        }
+      }
+    }
   }
 }
