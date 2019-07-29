@@ -4,7 +4,9 @@ Page({
     // 左侧的菜单
     leftMenuList:[],
     // 右侧的商品数组
-    rightGoodsList:[]
+    rightGoodsList:[],
+    // 选中的菜单的索引
+    currentIndex:0
   },
   onLoad(){
     this.getCategoryList();
