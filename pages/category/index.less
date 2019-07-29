@@ -4,17 +4,19 @@
   calc  100vh 
   不要less来编译 calc中的代码！！
    */
+
   /* 原样输出 */
-  height: calc(100vh - 90rpx);
+  height: ~"calc(100vh - 90rpx)";
   display: flex;
-}
-.cate_container .left_menu {
-  /* 
+  .left_menu {
+    /* 
   子项 高度默认等于父项的高度
    */
-  flex: 1;
-}
-.cate_container .right_content {
-  flex: 3;
-  background-color: aqua;
+    flex: 1;
+   
+  }
+  .right_content {
+    flex: 3;
+    background-color: aqua;
+  }
 }
