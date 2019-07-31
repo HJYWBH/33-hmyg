@@ -1,6 +1,11 @@
 import { request } from "../../request/index.js";
 Page({
   data: {
+    tabs:[
+      {id:0,title:"综合",isActive:true},
+      {id:1,title:"销量",isActive:false},
+      {id:2,title:"价格",isActive:false}
+    ],
     // 页面要渲染的商品数组
     goodsList:[]
   },
@@ -34,5 +39,15 @@ Page({
           goodsList:result.goods
         })
       })
+  },
+  // 子组件触发的事件
+  handleItemChange(e){
+    // 获取传递过来的索引
+    const {index}=e.detail;
+    // 获取tabs数组
+    let {tabs}=this.data;
+    // 循环修改tabs数组
+    tabs.forEach((v,i)=>i===index?v.isActive=true:v.isActive=false);
+    this.setData({tabs});
   }
 })
